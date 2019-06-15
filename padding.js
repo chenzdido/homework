@@ -7,7 +7,7 @@ function padding(world)
     let i,j;
     for(i=0; i<num_row+2; i++)
     {
-        padded_world[i] = Array(num_row+2);
+        padded_world[i] = Array(num_col+2);
         for(j=0; j<num_col+2; j++)
         {
             if (i==0 || j==0 || i==num_row+1 || j==num_col+1)
@@ -16,7 +16,7 @@ function padding(world)
                 padded_world[i][j] = world[i-1][j-1];
         }
     }
-    
+
     //let padded_world = Array(num_col+2).fill(0);
     //zero_row = Array(num_col+2).fill(0);
     /*

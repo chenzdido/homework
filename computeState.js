@@ -1,4 +1,4 @@
-     function computeState(arr)
+function computeState(arr)
 {
     //count
     var count = 0;
