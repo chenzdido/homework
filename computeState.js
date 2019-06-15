@@ -1,4 +1,4 @@
-function computeState(arr)
+     function computeState(arr)
 {
     //count
     var count = 0;
@@ -26,4 +26,4 @@ function computeState(arr)
     return state;   //0: dead   1: alive
 }
 
-module.exports = computeState; 
+module.exports = computeState;
