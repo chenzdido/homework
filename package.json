@@ -5,10 +5,11 @@
   "main": "computeState.js",
   "dependencies": {},
   "devDependencies": {
+    "chai": "^4.2.0",
     "mocha": "^6.1.4"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha ."
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,5 @@
   "bugs": {
     "url": "https://github.com/chenzdido/homework/issues"
   },
-  "homepage": "https://github.com/chenzdido/homework#readme",
+  "homepage": "https://github.com/chenzdido/homework#readme"
 }
