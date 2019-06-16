@@ -11,9 +11,6 @@ function stateUpdate(world){
     padded_world = padding(world);
 
     //iterate
-    new_world = new Array();
-    //let num_row = padded_world.length;
-    //let num_col = padded_world[0].length;
     let i,j;
     for(i=1; i<num_row+1; i++)
     {

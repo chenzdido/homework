@@ -17,20 +17,6 @@ function padding(world)
         }
     }
 
-    //let padded_world = Array(num_col+2).fill(0);
-    //zero_row = Array(num_col+2).fill(0);
-    /*
-    for(let row = 0; row < num_row; row++)
-    {
-        world[row].push(0);
-        world[row].unshift(0);
-    }
-    for(let col=0;col<num_col+2;col++)
-    {
-        world[col].push(0);
-        world[col].unshift(0);
-    }*/
-
     return padded_world;
 }
 
