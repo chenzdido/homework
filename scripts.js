@@ -1,4 +1,4 @@
-
+//初始化world
 var world=new Array();
 for(var i=0;i<20;i++)
 {	world[i]=new Array();
@@ -7,15 +7,15 @@ for(var i=0;i<20;i++)
 		world[i][j]=0;
 	}
 }
-console.log(world);
+
 var canvas=document.getElementById("test-canvas");
 var start=document.getElementById("start");
 var stop=document.getElementById("stop");
-
 var clear=document.getElementById("clear");
 var speed=document.getElementById("speed");
 var speedValue=speed.value;
-
+var pause=false;
+//初始化矩阵
 var ctx=canvas.getContext('2d');
 for(var i=0;i<=300;i++)
 {
@@ -52,81 +52,73 @@ function getEventPosition(ev){
 function updateWorld(){
 	stateUpdate(world);
 	for(var i=0;i<20;i++){
-	for(var j=0;j<30;j++)
-	{
-		ctx.fillStyle = 'grey';
-		ctx.fillRect(j*10,i*10,9,9);
-		if(world[i][j]==1)
-		{
-		//console.log(i);
-		//console.log(j);
-		ctx.fillStyle="blue";
-		ctx.fillRect(j*10,i*10,9,9);
-		}
+        for(var j=0;j<30;j++)
+        {
+            ctx.fillStyle = 'grey';
+            ctx.fillRect(j*10,i*10,9,9);
+            if(world[i][j]==1)
+            {
+            ctx.fillStyle="blue";
+            ctx.fillRect(j*10,i*10,9,9);
+            }
+        }
+    }
+}
 
-	}
-}
-}
 //获取speedValue的值
 speed.addEventListener("click",function(){
 	speedValue=speed.value;
-	clearInterval(timer);
-	startAutoPlay();
+    clearInterval(timer);
+    if (!pause)
+	    startAutoPlay();
 })
+
 //自动更新
-//var set1=setInterval(startAutoPlay,speedValue);
 function startAutoPlay(){
 	speedValue=speed.value;
 
 	timer=setInterval(function(){
 		updateWorld();
-		//speedValue=speed.value;
-		console.log(speedValue);
-		/*var t=setInterval(function(){
-			updateWorld();
-			if()
-			{
-				clearInterval(t);
-			}
-		},speedValue);*/
-
-		//console.log(world);
 	},speedValue);
-	//clearInterval(timer);
+    pause = false;
 }
+
 //停止更新
 function stopAutoPlay(){
 	if(timer){
 		clearInterval(timer);
-	}
+    }
+    pause = true;
 }
+
 //点击start按钮后自动更新
 function pageLoad(){
-	start.onclick=startAutoPlay;
+    start.onclick=startAutoPlay;
 }
+
 //点击暂停后停止
 function stopRun(){
-	stop.onclick=stopAutoPlay;
+    stop.onclick=stopAutoPlay;
 }
-//stop.addEventListener("click",stopAutoPlay());
+
 //点击清除按钮清除canvas上的图像
 clear.addEventListener("click",function(){
 	for(var i=0;i<=300;i++)
 	{
-	for(var j=0;j<=200;j++)
-	{
-		ctx.fillStyle = 'grey';
-		ctx.fillRect(i,j,9,9);
-		
-		j+=9;
-	}
+        for(var j=0;j<=200;j++)
+        {
+            ctx.fillStyle = 'grey';
+            ctx.fillRect(i,j,9,9);
+            j+=9;
+        }
 	i+=9;
 }
 })
+
 //返回更新后的word矩阵
 function computeState(arr)
 {
-    //count
+    // 8邻域计数
     var count = 0;
     var state = 0;
     for(var a=0; a<=2;a++)
@@ -183,12 +175,9 @@ function stateUpdate(world){
     let num_col = world[0].length;
 
     //padding
-    padded_world = padding(world);
+    let padded_world = padding(world);
 
     //iterate
-    new_world = new Array();
-    //let num_row = padded_world.length;
-    //let num_col = padded_world[0].length;
     let i,j;
     for(i=1; i<num_row+1; i++)
     {
@@ -205,7 +194,7 @@ function stateUpdate(world){
     }
 
     return world;
-
 }
+
 pageLoad();
 stopRun();
