@@ -5,7 +5,8 @@
   "main": "computeState.js",
   "dependencies": {
     "deep-equal": "^1.0.1",
-    "deep-equal-in-any-order": "^1.0.13"
+    "deep-equal-in-any-order": "^1.0.13",
+    "jsdom-global": "^3.0.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -15,7 +16,7 @@
     "webpack-cli": "^3.3.4"
   },
   "scripts": {
-    "test": "mocha .",
+    "test": "mocha *.test.js",
     "webpack": "webpack scripts.js"
   },
   "repository": {
